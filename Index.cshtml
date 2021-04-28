@@ -1,0 +1,200 @@
+﻿@model IEnumerable<WebApplication2.Models.Meeting>
+
+@{
+    ViewBag.Title = "Index";
+   
+   
+}
+
+<h2>List Of Meetings</h2>
+
+
+
+  
+
+<p>
+    <a href="@Url.Action("AddOrEdit","meet")" class="btn btn-default"><i class="fa fa-plus"></i> Create New</a>
+    <a href="@Url.Action("Sms","meet")" class="btn btn-default"><i class="fa fa-phone"></i> Send SMS</a>
+    <div class="form-group">
+
+
+        </div>
+
+    <div style="margin-top: 50px" ></div>
+</p>
+
+
+<table   class="table table-striped">
+    <thead class="table-heading">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idmeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datemeet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+
+
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.classe)
+            </th>
+            <th> Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idmeet)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.datemeet)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.subject)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.sender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.classe)
+    </td>
+
+
+ 
+
+
+
+    <td>
+        <a href="@Url.Action("AddOrEdit", "meet", new { id = item.idmeet})" class="btn btn-default"><i class="fa fa-pencil"></i>  Edit</a>
+
+        <a onclick="Delete(@item.idmeet)" class="btn btn-default"><i class="fa fa-trash"></i> Delete</a>
+
+
+
+
+
+        
+
+      
+
+        
+
+    </td>
+
+</tr>
+
+
+
+    }
+</table>
+
+@section scripts{
+     
+
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+
+          function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations','Are You Sure to Delete this Record ?',function(){
+                window.location.href  = '@Url.Action("Delete","meet")/'+id;
+            },null );
+        }
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+    </script>
+
+
+
+
+  
+
+ 
+ 
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

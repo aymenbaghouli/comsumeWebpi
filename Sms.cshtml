@@ -1,0 +1,49 @@
+﻿@model WebApplication2.Models.Mailing
+@{
+    ViewBag.Title = "Sms";
+}
+
+<h2>Sms</h2>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.to)
+
+            @Html.ValidationMessageFor(model => model.to)
+            <div>
+
+                <input name="To" type="number" required>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.message)
+
+            @Html.ValidationMessageFor(model => model.message)
+            <div>
+
+                <input name="Message" type="text" required>
+
+            </div>
+
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn button" style="background-color:palevioletred" />
+
+            <input type="reset" value="Reset" class="btn button " />
+
+            
+
+        </div>
+    }
+
+  
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
